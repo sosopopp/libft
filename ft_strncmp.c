@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sokhenfr <sokhenfr@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/28 09:35:17 by sokhenfr          #+#    #+#             */
-/*   Updated: 2026/04/28 10:27:15 by sokhenfr         ###   ########.fr       */
+/*   Created: 2026/04/28 10:30:45 by sokhenfr          #+#    #+#             */
+/*   Updated: 2026/04/29 07:40:04 by sokhenfr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-char	*ft_strrchr(const char *str, int c)
+int	ft_strncmp(char *s1, char *s2, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (str[i])
-		i++;
-	while (i >= 0)
+	while (i < n && (s1[i] || s2[i]))
 	{
-		if (str[i] == (char)c)
-			return ((char *)&str[i]);
-		i--;
+		if ((unsigned char)s1[i] != (unsigned char)s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
 	}
-	return (NULL);
+	return (0);
 }
 /*
-int main (void)
+int	main(void)
 {
-	printf("%s\n", ft_strrchr("banana", 'a'));
-}
-*/
+	printf("%d", ft_strncmp("hello","helicopter", 3));
+}*/
